@@ -1,4 +1,7 @@
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL || 'https://bckend12345.onrender.com';
+
+
+console.log('Using API URL:', API_URL);
 
 export const api = {
     // Auth

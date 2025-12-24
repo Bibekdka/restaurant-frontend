@@ -29,11 +29,15 @@ export default function App() {
       try {
         setLoading(true);
         // Using the fake data seed check or real API
-        const response = await fetch('http://localhost:5000/api/products');
-        if (response.ok) {
-          const data = await response.json();
+        // Using the fake data seed check or real API
+        const data = await api.getProducts();
+
+        // Handle the response directly since api.getProducts converts to json
+        if (data) {
           const mappedData = data.map(item => ({ ...item, id: item._id }));
           setFoods(mappedData);
+          setLoading(false); // Ensure loading is set false on success
+          return;
         }
       } catch (error) {
         console.error("Error loading foods:", error);
